@@ -1,0 +1,33 @@
+
+Käyttäjä->Selain: Käyttäjä kirjoittaa lomakkeen kenttään ja painaa Talleta-näppäintä
+Selain->Palvelin:POST -pyyntö osoitteeseen new_note
+note right of Palvelin
+    Palvelin luo uutta muistiinpanoa vastaavan olion 
+    ja laittaa sen muistiinpanot sisältävään taulukkoon 
+    nimeltään notes
+end note
+Palvelin->Selain:Palvelin vastaa: 302, Found
+note left of Palvelin
+    Palvelin kehottaa selainta tekemään 
+    uuden GET-pyynnön osoitteeseen notes
+    end note
+note right of Selain
+    Selain lataa sivun uudelleen
+    end note 
+Selain->Palvelin: GET notes
+Palvelin->Selain: Status 200, notes.html
+note right of Selain
+    Selain lukee notes.html ja pyytää main.css -tiedoston
+end note
+Selain->Palvelin: GET main.css
+Palvelin->Selain: Status 200, OK
+note right of Selain
+    Selain lukee notes.html ja pyytää main.js -tiedoston
+end note
+Selain->Palvelin: GET main.js
+Palvelin->Selain: Status 200, OK
+Selain->Palvelin: GET data.json
+note right of Selain
+    Selain lukee main.js koodin ja pyytää data.json -tiedoston
+end note
+Selain->Käyttäjä: Selain näyttää palvelimen palauttaman uuden tekstikentän upotettuna HTML:ään
