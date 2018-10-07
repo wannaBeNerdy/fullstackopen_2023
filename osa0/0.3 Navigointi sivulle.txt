@@ -1,0 +1,16 @@
+title Navigointi sivulle
+
+Käyttäjä->Selain: Käyttäjä kirjoittaa osoitekenttään: https://fullstack-exampleapp.herokuapp.com/notes
+note right of Selain: Selain lähettää palvelimelle pyynnön
+Selain->Palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+Palvelin->Selain: status 200 OK, sivun HTML-koodi
+note right of Selain: Selain lukee HTML-koodin script-tagin ja lähettää palvelimelle pyynnön
+Selain->Palvelin: GET main.css
+Palvelin->Selain: Status 200, main.css
+note right of Selain: Selain lukee HTML-koodin script-tagin ja lähettää palvelimelle pyynnön
+Selain->Palvelin: GET main.js
+Palvelin->Selain: Status 200, main.js
+note right of Selain: Selain lukee main.js koodin ja lähettää palvelimelle pyynnön
+Selain->Palvelin: GET data.json
+Palvelin->Selain: Status 200, data.json
+Selain->Käyttäjä: Selain näyttää palvelimen palauttaman HTML:n, jossa on tallennetut muistiinpanot ja talletuskenttä
