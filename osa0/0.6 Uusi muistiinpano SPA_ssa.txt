@@ -1,0 +1,18 @@
+
+Käyttäjä->Selain: Käyttäjä kirjoittaa lomakkeen kenttään ja painaa Talleta
+note right of Selain
+    spa.js -tiedoston koodi hakee lomake-elementin notes_form
+    ja rekisteröi sille tapahtumankäsittelijän, sellaisille tilanteille
+    kun lomake submitoidaan.
+    Tapahtumankäsittelija estää koodilla lomakkeen oletusarvoisen
+    käyttäytymisen.
+    Tämän jälkeen se luo uuden muistiinpanon, lisää sen listalle,
+    piirtää listan uudelleen ja lähettää uuden muistiinpanon palvelimelle.
+end note
+Selain->Palvelin: POST -pyyntö osoitteeseen new_note_spa
+note right of Selain
+    Pyyntö sisältää JSON-muotoisen muistiinpanon,
+    jonka sisällä on content ja date
+end note
+Palvelin->Selain: Status 201, Created
+Selain->Käyttäjä:Selain näyttää palvelimen palauttaman uuden tekstikentän upotettuna HTML:ään
